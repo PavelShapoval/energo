@@ -11,8 +11,14 @@ if($st == 8){?>
 ?>
 
 
-<!-- вхождение строки в uri делал на viva-city-->
-			<?php
+<!-- вхождение строки в uri делал на viva-city более корректная проверка, т.к. нулевое вхождение и есть medicine, слэши обязательны-->
+
+<?php
+			$string = strpos($_SERVER['REQUEST_URI'], '/medicine/');
+			//var_dump($string);
+			if($string === 0): ?> 
+<!-- вхождение строки в uri делал на viva-city проверка в которой м.б. ошибка т.к. medicine может быть глубже в УРЛ-->			
+<?php
 			$string = strpos($_SERVER['REQUEST_URI'], 'medicine');
 			//var_dump($string);
 			if($string === 1): ?> 
